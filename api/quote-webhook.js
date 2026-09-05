@@ -16,7 +16,7 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ ok: false, error: "method_not_allowed" });
   }
 
-  const key = process.env.HAWKINS_QUOTE_WEBHOOK_KEY;
+  const key = process.env.HAWKINS_QUOTE_WEBHOOK_KEY || process.env.HAWKINS_QUOTE_HOOK_KEY;
   if (!key) {
     return res.status(500).json({ ok: false, error: "missing_webhook_key" });
   }
