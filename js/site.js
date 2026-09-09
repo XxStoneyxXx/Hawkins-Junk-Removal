@@ -27,6 +27,18 @@
     next.value = window.location.origin + "/thanks";
   }
 
+  var email = document.getElementById("email");
+  var replyto = document.getElementById("form-replyto");
+  if (email && replyto && email.form) {
+    var syncReplyTo = function () {
+      replyto.value = email.value;
+    };
+    syncReplyTo();
+    email.addEventListener("input", syncReplyTo);
+    email.addEventListener("change", syncReplyTo);
+    email.form.addEventListener("submit", syncReplyTo);
+  }
+
   var toggle = document.querySelector("[data-nav-toggle]");
   var nav = document.querySelector("[data-nav]");
   if (toggle && nav) {
